@@ -252,4 +252,19 @@ html.dark {
   [id^='tui-hint_price-impact'] {
     background: rgb(56, 56, 56) !important;
   }
+
+  app-swap-info-container,
+  header.rubic-header,
+  .banner,
+  app-analytics-link,
+  app-rubic-volume,
+  app-rubic-footer,
+  .carrotquest-messenger-collapsed-container,
+  .carrotquest-css-reset {
+    display: none !important;
+  }
+
+  app-swaps-form {
+    margin-top: 330px !important;
+  }
 }
