@@ -32,6 +32,10 @@
     justify-content: space-between;
     height: 100%;
 
+    &:last-child {
+      width: 300px;
+    }
+
     @include iframe-horizontal {
       justify-content: center;
 
@@ -76,6 +80,10 @@
     background-color: transparent;
 
     border: none;
+
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
 
     @include iframe-horizontal {
 

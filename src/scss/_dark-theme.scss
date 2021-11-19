@@ -112,17 +112,18 @@ html.dark {
 
     .gradient {
       position: absolute;
-      top: -50px;
-      left: calc(50% - 400px);
+      top: -274px;
+      left: calc(50% - 572px);
       z-index: -99;
 
       display: block;
-      width: 800px;
-      height: 800px;
+      width: 1225px;
+      height: 1061px;
 
-      background-image: radial-gradient(var(--primary-color) 0%, $backgrond-black 70%, $backgrond-black 100%);
+      background-size: cover;
 
-      filter: blur(50px);
+      //background-image: radial-gradient(var(--primary-color) 0%, $backgrond-black 70%, $backgrond-black 100%);
+      background-image: url('/assets/images/bg.png');
 
       content: '';
     }

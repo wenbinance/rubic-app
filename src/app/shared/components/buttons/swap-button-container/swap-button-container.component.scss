@@ -2,6 +2,21 @@
 
 $point-radius: 26px;
 
+
+.analytics {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: hsla(128, 39%, 48%, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
 :host {
   @include iframe {
     width: 180px;

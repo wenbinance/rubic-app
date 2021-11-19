@@ -19,9 +19,8 @@
   margin-bottom: 20px;
   padding: 30px;
 
-  background-color: var(--main-form-background);
+  background-color: hsla(120, 10%, 6%, 0.66);
   border-radius: 19px;
-  backdrop-filter: blur(50px);
 
   @include iframe-horizontal {
     display: flex;
