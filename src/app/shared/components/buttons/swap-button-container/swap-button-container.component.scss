@@ -4,17 +4,18 @@ $point-radius: 26px;
 
 
 .analytics {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: hsla(128, 39%, 48%, 1);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
+
+  color: hsla(128, 39%, 48%, 1);
+  font-weight: 500;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 :host {
