@@ -54,6 +54,10 @@ import { OneInchArbitrumService } from '@features/instant-trade/services/instant
 import { UniSwapV3ArbitrumService } from '@features/instant-trade/services/instant-trade-service/providers/arbitrum/uni-swap-v3-arbitrum-service/uni-swap-v3-arbitrum.service';
 import { TrisolarisAuroraService } from '@features/instant-trade/services/instant-trade-service/providers/aurora/trisolaris-aurora-service/trisolaris-aurora.service';
 import { WannaSwapAuroraService } from '@features/instant-trade/services/instant-trade-service/providers/aurora/wanna-swap-aurora-service/wanna-swap-aurora.service';
+import { CurveEthereumService } from '@features/instant-trade/services/instant-trade-service/providers/ethereum/curve-eth-service/curve-eth.service';
+import { CurvePolygonService } from '@features/instant-trade/services/instant-trade-service/providers/polygon/curve-polygon-service/curve-polygon.service';
+import { AuthService } from '@core/services/auth/auth.service';
+import { CurveFantomService } from '@features/instant-trade/services/instant-trade-service/providers/fantom/curve-fantom-service/curve-fantom.service';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +89,7 @@ export class InstantTradeService {
     private readonly oneInchEthService: OneInchEthService,
     private readonly uniswapV2Service: UniSwapV2Service,
     private readonly uniswapV3EthereumService: UniSwapV3EthereumService,
+    private readonly curveEthereumService: CurveEthereumService,
     private readonly sushiSwapEthService: SushiSwapEthService,
     private readonly zrxService: ZrxService,
     // BSC
@@ -94,6 +99,7 @@ export class InstantTradeService {
     // Polygon
     private readonly uniswapV3PolygonService: UniSwapV3PolygonService,
     private readonly oneInchPolygonService: OneInchPolygonService,
+    private readonly curvePolygonService: CurvePolygonService,
     private readonly quickSwapService: QuickSwapService,
     private readonly sushiSwapPolygonService: SushiSwapPolygonService,
     private readonly algebraService: AlgebraService,
@@ -108,6 +114,7 @@ export class InstantTradeService {
     private readonly sushiSwapFantomService: SushiSwapFantomService,
     private readonly spookySwapFantomService: SpookySwapFantomService,
     private readonly spiritSwapFantomService: SpiritSwapFantomService,
+    private readonly curveFantomService: CurveFantomService,
     // MoonRiver
     private readonly sushiSwapMoonRiverService: SushiSwapMoonRiverService,
     private readonly solarBeamMoonriverService: SolarBeamMoonRiverService,
@@ -129,6 +136,7 @@ export class InstantTradeService {
     private readonly publicBlockchainAdapterService: PublicBlockchainAdapterService,
     private readonly translateService: TranslateService,
     private readonly notificationsService: NotificationsService,
+    private readonly authService: AuthService,
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector,
     private readonly successTxModalService: SuccessTxModalService,
@@ -145,7 +153,8 @@ export class InstantTradeService {
         [INSTANT_TRADES_PROVIDERS.UNISWAP_V2]: this.uniswapV2Service,
         [INSTANT_TRADES_PROVIDERS.UNISWAP_V3]: this.uniswapV3EthereumService,
         [INSTANT_TRADES_PROVIDERS.SUSHISWAP]: this.sushiSwapEthService,
-        [INSTANT_TRADES_PROVIDERS.ZRX]: this.zrxService
+        [INSTANT_TRADES_PROVIDERS.ZRX]: this.zrxService,
+        [INSTANT_TRADES_PROVIDERS.CURVE]: this.curveEthereumService
       },
       [BLOCKCHAIN_NAME.BINANCE_SMART_CHAIN]: {
         [INSTANT_TRADES_PROVIDERS.ONEINCH]: this.oneInchBscService,
@@ -157,7 +166,8 @@ export class InstantTradeService {
         [INSTANT_TRADES_PROVIDERS.QUICKSWAP]: this.quickSwapService,
         [INSTANT_TRADES_PROVIDERS.SUSHISWAP]: this.sushiSwapPolygonService,
         [INSTANT_TRADES_PROVIDERS.ALGEBRA]: this.algebraService,
-        [INSTANT_TRADES_PROVIDERS.UNISWAP_V3]: this.uniswapV3PolygonService
+        [INSTANT_TRADES_PROVIDERS.UNISWAP_V3]: this.uniswapV3PolygonService,
+        [INSTANT_TRADES_PROVIDERS.CURVE]: this.curvePolygonService
       },
       [BLOCKCHAIN_NAME.HARMONY]: {
         [INSTANT_TRADES_PROVIDERS.SUSHISWAP]: this.sushiSwapHarmonyService,
@@ -175,7 +185,8 @@ export class InstantTradeService {
       [BLOCKCHAIN_NAME.FANTOM]: {
         [INSTANT_TRADES_PROVIDERS.SUSHISWAP]: this.sushiSwapFantomService,
         [INSTANT_TRADES_PROVIDERS.SPOOKYSWAP]: this.spookySwapFantomService,
-        [INSTANT_TRADES_PROVIDERS.SPIRITSWAP]: this.spiritSwapFantomService
+        [INSTANT_TRADES_PROVIDERS.SPIRITSWAP]: this.spiritSwapFantomService,
+        [INSTANT_TRADES_PROVIDERS.CURVE]: this.curveFantomService
       },
       [BLOCKCHAIN_NAME.ARBITRUM]: {
         [INSTANT_TRADES_PROVIDERS.ONEINCH]: this.oneInchArbitrumService,

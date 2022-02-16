@@ -67,8 +67,20 @@ $point-radius: 26px;
 
 app-rubic-button[error=true] {
   @include iframe {
-    ::ng-deep button span {
-      font-size: 14px;
+    ::ng-deep button {
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+app-rubic-button[error-min=true] {
+  @include iframe {
+    ::ng-deep button {
+      span {
+        font-size: 12px;
+      }
     }
   }
 }

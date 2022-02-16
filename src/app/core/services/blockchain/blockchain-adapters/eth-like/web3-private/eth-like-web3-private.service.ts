@@ -368,7 +368,6 @@ export class EthLikeWeb3PrivateService {
   ): Promise<TransactionReceipt> {
     const contract = new this.web3.eth.Contract(contractAbi, contractAddress);
     const gasPrice = await this.calculateGasPrice(options.gasPrice);
-
     return new Promise((resolve, reject) => {
       this.emitTransaction();
       contract.methods[methodName](...methodArguments)

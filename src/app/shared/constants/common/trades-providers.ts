@@ -101,6 +101,11 @@ const instantTradesProviders: Record<INSTANT_TRADES_PROVIDERS, Provider> = {
     image: `${imageBasePath}algebra.webp`,
     color: '#00CAB2'
   },
+  [INSTANT_TRADES_PROVIDERS.CURVE]: {
+    name: 'Curve',
+    image: `${imageBasePath}curve.svg`,
+    color: '#00CAB2'
+  },
   [INSTANT_TRADES_PROVIDERS.VIPER]: {
     name: 'Viper',
     image: `${imageBasePath}viperswap.svg`,
