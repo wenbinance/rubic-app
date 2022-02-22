@@ -168,10 +168,15 @@ export class CrossChainRoutingService {
       fromAmount,
       fromTransitToken
     );
+
+    const sourceFilteredBlockchainProviders = sourceBlockchainProviders.filter(
+      provider => !this.contracts[fromBlockchain].isProviderOneinch(provider.providerIndex)
+    );
+
     const {
       providerIndex: fromProviderIndex,
       tradeAndToAmount: { trade: fromTrade, toAmount: fromTransitTokenAmount }
-    } = sourceBlockchainProviders[0];
+    } = sourceFilteredBlockchainProviders[0];
 
     const { toTransitTokenAmount, feeInPercents } = await this.getToTransitTokenAmount(
       toBlockchain,
@@ -191,8 +196,9 @@ export class CrossChainRoutingService {
     const filteredTargetBlockchainProviders = targetBlockchainProviders.filter(
       provider =>
         !(
-          fromBlockchain === BLOCKCHAIN_NAME.SOLANA &&
-          this.contracts[toBlockchain].isProviderUniV3(provider.providerIndex)
+          (fromBlockchain === BLOCKCHAIN_NAME.SOLANA &&
+            this.contracts[toBlockchain].isProviderUniV3(provider.providerIndex)) ||
+          this.contracts[toBlockchain].isProviderOneinch(provider.providerIndex)
         )
     );
 
